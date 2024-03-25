@@ -1064,7 +1064,7 @@ let CharacterMenu = {
                 document.getElementById(info).addEventListener('click',() => { this.toggleOverlay(info) })
             }
         }
-        this.menu.insertBefore(this.infoOverlay,this.menu.children[1])
+        this.menu.insertBefore(this.infoOverlay,document.getElementById('CharaIcons'))
         this.initOverlay()
     },
     initOverlay() {
