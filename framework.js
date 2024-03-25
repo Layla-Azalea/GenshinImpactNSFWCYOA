@@ -726,6 +726,22 @@ class Character{
     changeAttr(attr,value) {
         if (typeof(this[attr]) == 'string') {
             this[attr] = value
+            if (this.Type == 'Character') {
+                this.Info['Body Characteristics'] = [
+                    new OverlayHeader('BodyCharacteristicsTitle','Body Characteristics','','small'),
+                    new OverlayPara(`BodyCharacteristics${this.Name}`,`${this.Name}'s Body`,`
+                    Breasts: ${this.Breasts}<br>
+                    Ass: ${this.Ass}<br>
+                    Genitals: ${this.Genitals}<br>
+                    Eye Colour: ${this.EyeColour}<br>
+                    Skin Colour: ${this.SkinColour}<br>
+                    Hair Colour: ${this.HairColour}<br>
+                    Hair Length: ${this.HairLength}<br>
+                    Height: ${this.Height}<br>
+                    `,`Characters/${this.Name}/Nude.png`,'flex','space'),
+                    // new CharacterOptionsDisplay(`BodyCharacteristics${this.Name}`,`${this.Name}'s Body`,'body')
+            ]
+            }
         } else if (typeof(this[attr]) == 'object') {
             if (attr == 'Skills') {
                 this[attr][Object.keys(value)[0]] = value[Object.keys(value)]
