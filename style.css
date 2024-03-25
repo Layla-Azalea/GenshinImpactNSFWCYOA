@@ -1,0 +1,452 @@
+@font-face {
+    font-family: "GenshinFont";
+    font-weight: 600;
+    src: url("WebsiteAssets/GenshinFont.ttf");
+}
+body {
+    background-image: url('WebsiteAssets/background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: 50%;
+    scroll-behavior: smooth;
+}
+body::-webkit-scrollbar {
+    display: none;
+}
+div.section {
+    display: flex;
+    background-color: rgba(236, 229, 216, 1);
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px;
+    justify-content: space-evenly;
+    text-align: center;
+    align-items: center;
+    width: 80%;
+    margin: auto;
+    margin-top: 50px;
+    gap: 2vw;
+    padding: 1vw;
+
+    border: solid 10px rgba(211,188,142,1);
+
+    position: relative;
+}
+div.section.space {
+    justify-content: space-between;
+}
+div.button {
+    background-color: rgba(236, 229, 216, 1);
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px;
+    justify-content: space-evenly;
+    text-align: center;
+    align-items: center;
+    width: 10%;
+    margin: auto;
+    margin-top: 50px;
+
+    border: solid 10px rgba(211,188,142,1);
+
+    position: relative;
+}
+div.button:hover {
+    cursor: pointer;
+    border: solid 10px white;
+    transition: 75ms ease-in-out;
+    transform: scale(1.05);
+}
+div.header {
+    display: block;
+    background-color: rgba(73,83,102,1);
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px;
+    justify-content: space-evenly;
+    text-align: center;
+    align-items: center;
+    width: 80%;
+    margin: auto;
+    margin-top: 50px;
+    gap: 2vw;
+
+    border: solid 10px rgba(108,114,128,1);
+
+    position: relative;
+}
+div.section.header {
+    width: 40%;
+}
+div.section.choice {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: rgba(236, 229, 216, 0.5);
+}
+div.section.choice.small {
+    flex-wrap: wrap;
+}
+div.image {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    padding: 10px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 15px rgba(211,188,142,1);
+    background-color: rgba(233, 229, 220, 1);
+    border: solid 10px transparent;
+    transition: 75ms ease-in-out;
+}
+div.image.matchHydro {
+    box-shadow: 0px 0px 15px rgba(76,193,241,1);
+}
+div.image.matchElectro {
+    box-shadow: 0px 0px 15px rgb(231, 187, 255);
+}
+div.image.large {
+    width: 45%;
+    gap: 20px;
+}
+div.image.small {
+    width: 15%;
+    flex-wrap: wrap;
+}
+div.image.wide {
+    width: 100%;
+    gap: 20px;
+}
+div.image.small h3 {
+    flex-grow: 1;
+}
+div.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
+div.selected {
+    border: solid 10px white;
+    box-shadow: 0px 0px 15px white;
+    transition: 75ms ease-in-out;
+}
+div.image.choice:hover {
+    cursor: pointer;
+    border: solid 10px white;
+    transition: 75ms ease-in-out;
+    transform: scale(1.05);
+}
+div.image.choice.error {
+    transition: 75ms ease-in-out;
+    opacity: 0.8;
+    border: solid 10px rgb(255, 86, 64);
+}
+div.icons {
+    position: fixed;
+    z-index: 1000;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    text-align: center;
+    align-items: center;
+    left: 1%;
+    width: 7%;
+}
+div.CharacterMenu {
+    position: fixed;
+    display: block;
+    z-index: 0;
+    opacity: 0;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    transition: 250ms ease-in-out;
+}
+div.PartyMenu {
+    position: fixed;
+    display: block;
+    z-index: 0;
+    opacity: 0;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    transition: 250ms ease-in-out;
+}
+div.PointsMenu {
+    position: fixed;
+    display: block;
+    z-index: 0;
+    opacity: 0;
+    left: -50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 50%;
+    transition: 250ms ease-in-out;
+}
+div.CharacterSummaryMenu {
+    position: fixed;
+    display: block;
+    z-index: 0;
+    opacity: 0;
+    left: -50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 100%;
+    transition: 250ms ease-in-out;
+}
+div.CharacterMenu.Overlay {
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px;
+    padding: 1vw;
+    border: solid 10px rgba(211,188,142,1);
+    background-color: rgba(73,83,102,0.5);
+
+    /* left: 50%;
+    top: 50%;
+    height: 80%;
+    width: 70%; */
+    left: 25%;
+    width: 70%;
+    height: 70%;
+    top: 20%;
+    /* transform: translate(-50%,-50%); */
+    transition: 250ms ease-in-out;
+    overflow: auto;
+}
+div.CharacterMenu.Overlay::-webkit-scrollbar {
+    display: none;
+}
+div.overlayContent {
+    overflow: auto;
+    /* height: fit-content; */
+}
+div.overlayContent p {
+    font-size: 1vw;
+}
+div.CharacterMenu.shown {
+    opacity: 1;
+    z-index: 999;
+    transition: 250ms ease-in-out;
+}
+div.PartyMenu.shown {
+    opacity: 1;
+    z-index: 999;
+    transition: 250ms ease-in-out;
+}
+div.PointsMenu.shown {
+    opacity: 1;
+    left: 50%;
+    z-index: 999;
+    transition: 250ms ease-in-out;
+}
+div.CharacterSummaryMenu.shown {
+    opacity: 1;
+    left: 50%;
+    z-index: 999;
+    transition: 250ms ease-in-out;
+}
+div.CharaPanels {
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px;
+    padding: 1vw;
+    border: solid 10px rgba(211,188,142,1);
+    background-color: rgba(73,83,102,0.5);
+    position: fixed;
+}
+div#InfoButtons {
+    top: 30%;
+    left: 2.5%;
+}
+div#InfoButtons h1 {
+    cursor: pointer;
+}
+div#OverallInfo {
+    top: 5%;
+    right: 2.5%;
+    width: 25%;
+}
+div#CharaIcons {
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 2vw;
+}
+div#PartyInfo {
+    top:10%;
+    right: 2.5%;
+    width: 60%;
+    overflow: auto;
+    height: 70%;
+}
+div#PointsInfo {
+    top:10%;
+    right: 2.5%;
+    width: 60%;
+    overflow: auto;
+    height: 70%;
+}
+div.skill h2 {
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+}
+div.skills {
+    display: grid;
+    
+    grid-template-columns: 20% auto;
+    /* gap: 1vw; */
+    /* justify-content: space-evenly; */
+}
+img.background {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+img.icon {
+    height: 5vw;
+    width: 5vw;
+}
+img.icon.chara {
+    cursor: pointer;
+}
+img.icon.one {
+    position: absolute;
+    height: 3.5vw;
+    width: 3.5vw;
+}
+img.image {
+    /* pointer-events: none; */
+    width: 17vw;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0px 0px 15px rgba(211,188,142,1);
+}
+img.image.horizontal {
+    /* pointer-events: none; */
+    width: auto;
+    height: 20vw;
+    object-fit: cover;
+    border-radius: 20px;
+}
+img.image.choice {
+    width: 100%;
+    max-width: 16vw;
+}
+img.borderless {
+    box-shadow: none;
+}
+h1 {
+    font-size: 3vw;
+    font-family: 'GenshinFont', cursive;
+    color: rgba(73,83,102,1);
+    text-shadow: 0px 0px 15px rgba(73,83,102,1);
+}
+div.CharaPanels h1 {
+    font-size: 2vw;
+    color: rgba(236, 229, 216, 1);
+}
+div.CharaPanels h2 {
+    font-size: 1.5vw;
+    color: rgba(236, 229, 216, 1);
+}
+div#PartyContent h2 {
+    color: rgba(73,83,102,1);
+}
+div.PartyContentLayout {
+    /* background-color: black; */
+    /* display: flex; */
+    height: 80%;
+    width: 50%;
+}
+div.PartyIconLayout {
+    position: absolute;
+    display: flex;
+    width: 20%;
+    top: 48%;
+    left: 20%;
+    transform: translate(-50%,-50%);
+    gap: 20px;
+    justify-content: space-evenly;
+    text-align: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+input.text {
+    font-family: 'GenshinFont', cursive;
+    border-radius: 25px;
+    outline: none;
+    border: none;
+    border-bottom: 5px solid rgba(211,188,142,1);
+    background-color: transparent;
+    font-size: 2.5em;
+    text-align: center;
+    width: 100%;
+}
+input.text:focus {
+    background-image: linear-gradient(transparent,rgba(211,188,142,0.25));
+}
+form {
+    text-align: center;
+}
+img.PartyPane {
+    border-radius: 25px;
+    width: 100%;
+    border: solid 10px transparent;
+    transition: 75ms ease-in-out;
+}
+img.PartyPane:hover {
+    cursor:pointer;
+    border: solid 10px white;
+    transition: 75ms ease-in-out;
+    transform: scale(1.05);
+}
+h2 {
+    font-size: 2vw;
+    font-family: 'GenshinFont', cursive;
+    color: rgba(73,83,102,1);
+}
+h3 {
+    font-size: 2vw;
+    font-family: 'GenshinFont', cursive;
+    color: rgba(73,83,102,1);
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+div.header h1, div.header h2 {
+    font-family: 'GenshinFont';
+    color: rgba(236, 229, 216, 1);
+}
+p {
+    font-size: 1.5vw;
+    font-family: 'GenshinFont', cursive;
+    color: rgba(73,83,102,1);
+}
+div.header p {
+    color: rgba(236, 229, 216, 1);
+}
+hr {
+    border-radius: 3px;
+    border: 3px solid rgba(211,188,142,1);
+}
+img.fill {
+    flex-shrink: 1;
+}
+p.para {
+    width: 80%;
+    margin: auto;
+}
+p.para.large {
+    font-size: 1.5vw;
+}
+span.text {
+    color: rgb(151, 123, 46)
+}
+span.sus {
+    color: rgb(255, 120, 79)
+}
+span.ooc {
+    color: rgb(114, 192, 255)
+}
+span.positive {
+    color: rgb(46, 209, 54)
+}
+span.negative {
+    color: rgb(255, 116, 74)
+}
