@@ -726,6 +726,22 @@ class Character{
     changeAttr(attr,value) {
         if (typeof(this[attr]) == 'string') {
             this[attr] = value
+            if (this.Type == 'Character') {
+                this.Info['Body Characteristics'] = [
+                    new OverlayHeader('BodyCharacteristicsTitle','Body Characteristics','','small'),
+                    new OverlayPara(`BodyCharacteristics${this.Name}`,`${this.Name}'s Body`,`
+                    Breasts: ${this.Breasts}<br>
+                    Ass: ${this.Ass}<br>
+                    Genitals: ${this.Genitals}<br>
+                    Eye Colour: ${this.EyeColour}<br>
+                    Skin Colour: ${this.SkinColour}<br>
+                    Hair Colour: ${this.HairColour}<br>
+                    Hair Length: ${this.HairLength}<br>
+                    Height: ${this.Height}<br>
+                    `,`Characters/${this.Name}/Nude.png`,'flex','space'),
+                    // new CharacterOptionsDisplay(`BodyCharacteristics${this.Name}`,`${this.Name}'s Body`,'body')
+            ]
+            }
         } else if (typeof(this[attr]) == 'object') {
             if (attr == 'Skills') {
                 this[attr][Object.keys(value)[0]] = value[Object.keys(value)]
@@ -1048,7 +1064,7 @@ let CharacterMenu = {
                 document.getElementById(info).addEventListener('click',() => { this.toggleOverlay(info) })
             }
         }
-        this.menu.appendChild(this.infoOverlay)
+        this.menu.insertBefore(this.infoOverlay,document.getElementById('CharaIcons'))
         this.initOverlay()
     },
     initOverlay() {
@@ -1190,10 +1206,10 @@ let PartyMenu = {
         'Cryo': new OverlayPara('ResonanceCryo','Cryo Resonance','Orgasms triple in length extending the pleasure peak for everyone in your team.','Party/ResonanceCryo.jpg','none'),
     },
     TeamCompositions: {
-        'Hypercarry': new OverlayPara('TeamCompositionHypercarry','Hypercarry','Your party fits the Hypercarry team composition.','PlaceholderImage.png','none'),
-        'Balanced Power': new OverlayPara('TeamCompositionBalanced Power','Balanced Power','Your party fits the Balanced Power team composition.','PlaceholderImage.png','none'),
-        'Power Distributed': new OverlayPara('TeamCompositionPower Distributed','Power Distributed','Your party fits the Power Distributed team composition.','PlaceholderImage.png','none'),
-        'Support All': new OverlayPara('TeamCompositionSupport All','Support All','Your party fits the Support All team composition.','PlaceholderImage.png','none')
+        'Hypercarry': new OverlayPara('TeamCompositionHypercarry','Hypercarry','Your party fits the Hypercarry team composition.',false,'none'),
+        'Balanced Power': new OverlayPara('TeamCompositionBalanced Power','Balanced Power','Your party fits the Balanced Power team composition.',false,'none'),
+        'Power Distributed': new OverlayPara('TeamCompositionPower Distributed','Power Distributed','Your party fits the Power Distributed team composition.',false,'none'),
+        'Support All': new OverlayPara('TeamCompositionSupport All','Support All','Your party fits the Support All team composition.',false,'none')
     },
     initMenu() {
         this.menu = document.createElement('div')
@@ -1249,7 +1265,14 @@ let PartyMenu = {
             }
         }
         if (Party.TeamComposition != false) {
-            document.getElementById(`TeamComposition${Party.TeamComposition}`).style.display = 'flex'
+            for (let comp of Object.keys(PartyMenu.TeamCompositions)) {
+                if (Party.TeamComposition == comp) {
+                    console.log([Party.TeamComposition, comp])
+                    document.getElementById(`TeamComposition${comp}`).style.display = 'flex'
+                } else {
+                    document.getElementById(`TeamComposition${comp}`).style.display = 'none'
+                }
+            }
         }
     },
     toggleMenu() {
