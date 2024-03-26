@@ -125,11 +125,19 @@ div.selected {
     box-shadow: 0px 0px 15px white;
     transition: 75ms ease-in-out;
 }
-div.image.choice:hover, div.image.choice:focus {
+/* div.image.choice:hover, div.image.choice:focus {
     cursor: pointer;
     border: solid 0.75vw white;
     transition: 75ms ease-in-out;
     transform: scale(1.05);
+} */
+@media (hover: hover) {
+    div.image.choice:hover {
+        cursor: pointer;
+        border: solid 0.75vw white;
+        transition: 75ms ease-in-out;
+        transform: scale(1.05);
+    }
 }
 div.image.choice.error {
     transition: 75ms ease-in-out;
