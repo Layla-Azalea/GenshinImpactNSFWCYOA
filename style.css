@@ -123,8 +123,14 @@ div.disabled {
 }
 div.selected {
     border: solid 0.75vw white;
-    box-shadow: 0px 0px 15px white;
+    box-shadow: 0px 0px 5vw white;
     transition: 75ms ease-in-out;
+}
+/* div.flashin {
+    background-color: rgb(247, 245, 243);
+} */
+div.flashout {
+    opacity: 0.65;
 }
 div.image.choice:hover, div.image.choice:focus {
     outline: none;

@@ -487,6 +487,8 @@ class Choices {
             } else {
                 this.deactivate(choiceID)
             }
+            document.getElementById(choiceID).classList.add('flashout')
+            setTimeout(() => { document.getElementById(choiceID).classList.remove('flashout') },100)
         } else if (this.choices[choiceID].enabled == false) {
             if (Object.keys(this.selectedChoices).length == this.limit) { this.toggle(this.selectedChoices[0]) }
             if (this.choices[choiceID].cost) {
@@ -529,6 +531,8 @@ class Choices {
             } else {
                 this.activate(choiceID)
             }
+            document.getElementById(choiceID).classList.add('flashin')
+            setTimeout(() => { document.getElementById(choiceID).classList.remove('flashin') },100)
         }
         if (this.activeFunc != 'none') { this.activeFunc() }
     }
