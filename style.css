@@ -125,7 +125,7 @@ div.selected {
     box-shadow: 0px 0px 15px white;
     transition: 75ms ease-in-out;
 }
-div.image.choice:hover {
+div.image.choice:hover, div.image.choice:focus {
     cursor: pointer;
     border: solid 0.75vw white;
     transition: 75ms ease-in-out;
@@ -443,7 +443,7 @@ p.para.large {
 span.textdark {
     color: rgb(151, 123, 46)
 }
-span.text {
+span.textlight {
     color: rgb(236, 193, 74)
 }
 span.sus {

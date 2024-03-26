@@ -449,7 +449,8 @@ class Choices {
         for (let choiceID in this.choices) {
             ChoicesController.choices[this.id].push(choiceID)
             let choice = this.choices[choiceID].create()
-            choice.addEventListener("click", () => this.toggle(choiceID))
+            choice.addEventListener("click", () => { this.toggle(choiceID); document.getElementById(choiceID).blur() })
+            choice.addEventListener("keypress", (e) => {if (e.key == 'Enter') { this.toggle(choiceID) }})
             choices.appendChild(choice)
         }
         if (parent == undefined) { document.body.appendChild(choices) } else { document.getElementById(parent).appendChild(choices)}
