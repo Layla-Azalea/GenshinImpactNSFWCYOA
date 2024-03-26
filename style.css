@@ -94,6 +94,7 @@ div.image {
     background-color: rgba(233, 229, 220, 1);
     border: solid 0.75vw transparent;
     transition: 75ms ease-in-out;
+    -webkit-tap-highlight-color: transparent;
 }
 div.image.matchHydro {
     box-shadow: 0px 0px 15px rgba(76,193,241,1);
@@ -125,19 +126,12 @@ div.selected {
     box-shadow: 0px 0px 15px white;
     transition: 75ms ease-in-out;
 }
-/* div.image.choice:hover, div.image.choice:focus {
+div.image.choice:hover, div.image.choice:focus {
+    outline: none;
     cursor: pointer;
     border: solid 0.75vw white;
     transition: 75ms ease-in-out;
     transform: scale(1.05);
-} */
-@media (hover: hover) {
-    div.image.choice:hover {
-        cursor: pointer;
-        border: solid 0.75vw white;
-        transition: 75ms ease-in-out;
-        transform: scale(1.05);
-    }
 }
 div.image.choice.error {
     transition: 75ms ease-in-out;
