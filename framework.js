@@ -691,7 +691,7 @@ class Character{
                 Hair Colour: ${this.HairColour}<br>
                 Hair Length: ${this.HairLength}<br>
                 Height: ${this.Height}<br>
-                `,`Characters/${this.Name}/Nude.png`,'flex','space'),
+                `,`Characters/${this.Name}/Nude.jpg`,'flex','space'),
                 // new CharacterOptionsDisplay(`BodyCharacteristics${this.Name}`,`${this.Name}'s Body`,'body')
         ]
         }
@@ -991,8 +991,8 @@ let CharacterMenu = {
             // <h1 id="Synergies">&#9671 Synergies</h1>
         }
         let backgroundImage = ``
-        if (this.activeCharacter.Type == 'Character') { backgroundImage = `Images/Characters/${this.activeCharacter.Name}/Splash.png` }
-        else if (this.activeCharacter.Type == 'Player') { backgroundImage = `Images/Splash${this.activeCharacter.Gender}.png` }
+        if (this.activeCharacter.Type == 'Character') { backgroundImage = `Images/Characters/${this.activeCharacter.Name}/Splash.jpg` }
+        else if (this.activeCharacter.Type == 'Player') { backgroundImage = `Images/Splash${this.activeCharacter.Gender}.jpg` }
         if (this.activeCharacter.Gender == 'Not Selected') { backgroundImage = `WebsiteAssets/PartyBackground.png` }
         let kinks = ''
         for (let kink of this.activeCharacter.Kinks) {
