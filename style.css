@@ -466,3 +466,12 @@ span.positive {
 span.negative {
     color: rgb(255, 116, 74)
 }
+a {
+    color: rgb(61, 134, 194);
+}
+a:visited {
+    color: rgb(61, 134, 194);
+}
+a:hover {
+    color: rgb(93, 167, 228);
+}
